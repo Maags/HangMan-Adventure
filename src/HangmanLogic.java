@@ -6,14 +6,17 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class HangmanLogic {
+    //stores the hidden word
     String hiddenWord;
-    StringBuilder currentWord;
+    //which words have the user guessed and how many have they left
+    StringBuilder currentGuess;
     ArrayList<Character> previousGuesses = new ArrayList<>();
 
 
     int maxTries = 6;
     int currentTry = 0;
-//
+
+    //creating arraylist and
     ArrayList<String> dictionary = new ArrayList<>();
     private static FileReader fileReader;
     private static BufferedReader bufferedFileReader;
@@ -21,10 +24,11 @@ public class HangmanLogic {
     public HangmanLogic() throws IOException {
         connectLibrary();
         hiddenWord = pickWord();
-        currentWord = initializeHiddenWord();
+        currentGuess = initializeCureentGuess();
     }
 
-    //checks is dictionary library is available
+    // Reads lines from dictionary.txt and add them to dictionary arraylist
+    // Checks is dictionary library is available
     public void connectLibrary() throws IOException {
         try {
             File inFile = new File("src//dictionary.txt");
@@ -51,7 +55,7 @@ public class HangmanLogic {
     }
 
     //creating the hiddenword with dashes and space (_ _ _ _ _)
-    public StringBuilder initializeHiddenWord() {
+    public StringBuilder initializeCureentGuess() {
         StringBuilder transWord = new StringBuilder();
         for (int i = 0; i< hiddenWord.length()*2; i++) {
             if (i%2 == 0) {
@@ -66,7 +70,7 @@ public class HangmanLogic {
 
     //Shows the hidden word
     public String getHiddenWord() {
-        return "Hidden word: " + currentWord.toString();
+        return "Hidden word: " + currentGuess.toString();
     }
 
     //returns the results, if the player won or lost
@@ -91,7 +95,7 @@ public class HangmanLogic {
     }
 
     public String getCondensedCurrentGuess() {
-        String guess = currentWord.toString();
+        String guess = currentGuess.toString();
         return guess.replace(" ", "");
     }
 
@@ -104,7 +108,7 @@ public class HangmanLogic {
         previousGuesses.add(guess);
         for (int i = 0; i< hiddenWord.length(); i++) {
             if (hiddenWord.charAt(i) == guess) {
-                currentWord.setCharAt(i*2, guess);
+                currentGuess.setCharAt(i*2, guess);
                 isItAGoodGuess = true;
             }
         }
