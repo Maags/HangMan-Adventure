@@ -10,12 +10,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class Main extends Application {
 
+
+    public Main() throws FileNotFoundException {
+    }
 
     public static void main(String[] args) {
         launch(args);
@@ -28,4 +35,6 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 1000, 600));
         primaryStage.show();
     }
+
+
 }
