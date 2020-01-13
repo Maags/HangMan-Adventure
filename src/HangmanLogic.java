@@ -16,7 +16,7 @@ public class HangmanLogic {
     int maxTries = 6;
     int currentTry = 0;
 
-    //creating arraylist and
+    //creating arraylist and enable us to make "changes" words into dashes
     ArrayList<String> dictionary = new ArrayList<>();
     private static FileReader fileReader;
     private static BufferedReader bufferedFileReader;
@@ -24,7 +24,7 @@ public class HangmanLogic {
     public HangmanLogic() throws IOException {
         connectLibrary();
         hiddenWord = pickWord();
-        currentGuess = initializeCureentGuess();
+        currentGuess = initializeCurrentGuess();
     }
 
     // Reads lines from dictionary.txt and add them to dictionary arraylist
@@ -55,7 +55,7 @@ public class HangmanLogic {
     }
 
     //creating the hiddenword with dashes and space (_ _ _ _ _)
-    public StringBuilder initializeCureentGuess() {
+    public StringBuilder initializeCurrentGuess() {
         StringBuilder transWord = new StringBuilder();
         for (int i = 0; i< hiddenWord.length()*2; i++) {
             if (i%2 == 0) {

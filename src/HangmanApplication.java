@@ -5,7 +5,8 @@ public class HangmanApplication {
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to HANGMAN ADVENTURE! \n \nThe rules are simple. A hidden word will be shown in dashes (_ _ _ _). Your job is to guess the word, one character at the time.\n" +
-                            "You only have 6 chances. Every incorrect guess will add i body part to your HANGMAN. When its a full person, you lose\n" +
+                            "You only have 6 chances. Every i" +
+                "" + "incorrect guess will add i body part to your HANGMAN. When its a full person, you lose\n" +
                             "Are you ready?!!");
         System.out.println();
 
