@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -8,13 +9,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
-public class hangManImageLoader extends JLabel {
+public class letterTileLoader extends JLabel {
+
+    private final char IMAGE_LETTER;
 
     private int preferredWidth;
 
     private int preferredHeight;
-
-    private final String IMAGE_BASE_NAME;
 
     private final String IMAGE_DIRECTORY;
 
@@ -24,20 +25,25 @@ public class hangManImageLoader extends JLabel {
 
     private BufferedImage image;
 
+    private MouseListener tileListener;
+
+    public letterTileLoader() {
+        this('a', "Resources/",".jpeg");
+    }
 
 
 
-    public hangManImageLoader(String imageBaseName, String imageDirectory, String imageType) {
+    public letterTileLoader(char imageLetter, String imageDirectory, String imageType) {
 
-        preferredHeight = 272;
-        preferredWidth = 282;
+        preferredHeight = 50;
+        preferredWidth = 65;
 
-        IMAGE_BASE_NAME = imageBaseName;
+        IMAGE_LETTER = imageLetter;
         IMAGE_DIRECTORY = imageDirectory;
         IMAGE_TYPE = imageType;
 
         setPreferredSize(new Dimension(preferredWidth, preferredHeight));
-        path = IMAGE_DIRECTORY + IMAGE_BASE_NAME + "_0" + IMAGE_TYPE;
+        path = IMAGE_DIRECTORY + IMAGE_LETTER + IMAGE_TYPE;
         image = loadImage(path);
     }
 
@@ -59,24 +65,30 @@ public class hangManImageLoader extends JLabel {
 
     }
 
-    public void nextImage (int imageNumber){
+    public char guess(){
 
-        loadNewImage(String.valueOf(imageNumber));
+        loadnewImage("guessed");
+        removeTileListener();
+        return IMAGE_LETTER;
     }
 
-    public void loseImage(){
-        loadNewImage("lose");
-    }
+    private void loadnewImage(String suffix){
 
-    public void winImage(){
-        loadNewImage("win");
-    }
-
-    private void loadNewImage(String suffix){
-
-        path = IMAGE_DIRECTORY + IMAGE_BASE_NAME + "_" + suffix + IMAGE_TYPE;
+        path = IMAGE_DIRECTORY + IMAGE_LETTER + "_" + suffix + IMAGE_TYPE;
         image = loadImage(path);
         repaint();
+    }
+
+    public void addTileListener(MouseListener l){
+
+        tileListener = l;
+        addMouseListener(tileListener);
+
+    }
+
+    public void removeTileListener(){
+
+        removeMouseListener(tileListener);
     }
 
     @Override
@@ -85,5 +97,6 @@ public class hangManImageLoader extends JLabel {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, preferredHeight, preferredWidth, null);
     }
+
 
 }
