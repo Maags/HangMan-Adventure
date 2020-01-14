@@ -58,4 +58,5 @@ public class hangManImageLoader extends JLabel {
         return img;
 
     }
+
 }
