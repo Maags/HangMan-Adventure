@@ -59,4 +59,31 @@ public class hangManImageLoader extends JLabel {
 
     }
 
+    public void nextImage (int imageNumber){
+
+        loadNewImage(String.valueOf(imageNumber));
+    }
+
+    public void loseImage(){
+        loadNewImage("lose");
+    }
+
+    public void winImage(){
+        loadNewImage("win");
+    }
+
+    private void loadNewImage(String suffix){
+
+        path = IMAGE_DIRECTORY + IMAGE_BASE_NAME + "_" + suffix + IMAGE_TYPE;
+        image = loadImage(path);
+        repaint();
+    }
+
+    @Override
+    protected void paintComponent (Graphics g){
+
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, preferredHeight, preferredWidth, null);
+    }
+
 }
