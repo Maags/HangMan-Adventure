@@ -16,7 +16,7 @@
    </ImageView>
    <ImageView fitHeight="282.0" fitWidth="272.0" layoutX="45.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
       <image>
-         <Image url="@../Resources/imageStart.JPG" />
+         <Image url="@../Resources/hangman_0.JPG" />
       </image>
    </ImageView>
     <GridPane fx:id="letterRack" layoutX="14.0" layoutY="476.0" prefHeight="110.0" prefWidth="969.0" vgap="14.0">
