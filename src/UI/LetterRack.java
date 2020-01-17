@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.*;
 
-
+/*
 public class LetterRack extends JPanel {
 
     private final int RACK_COLS;
@@ -38,8 +38,8 @@ public class LetterRack extends JPanel {
         LETTER_RACK_LAYOUT.setVgap(10);
         CAPACITY = RACK_ROWS * RACK_COLS;
 
-        IMAGE_DIRECTORY = imageDirectory;
-        IMAGE_TYPE = imageType;
+       // IMAGE_DIRECTORY = imageDirectory;
+       // IMAGE_TYPE = imageType;
 
         rack = new ArrayList<>();
         pickWord = inpickWord;
@@ -47,12 +47,18 @@ public class LetterRack extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(10,17, 10, 10));
         BorderFactory.createEmptyBorder();
         setLayout(LETTER_RACK_LAYOUT);
-        loadrack();
-        
+       // loadRack();
+
+        private void loadRack();{
+          //  buildRack();
+            for (LetterTileLoader tileLoader : rack)
+                add(tileLoader);
+        }
+
 
     }
 
 
 
 
-}
+}*/

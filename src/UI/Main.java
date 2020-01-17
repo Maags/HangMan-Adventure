@@ -2,6 +2,7 @@ package UI;
 
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,6 +21,9 @@ import java.io.FileNotFoundException;
 
 public class Main extends Application {
 
+    private Scene MenuScene;
+    private Scene GameScene;
+    public static int id;
 
     public Main() throws FileNotFoundException {
     }
@@ -30,9 +34,22 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("UI/GameScene.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("UI/MenuScene.fxml"));
         primaryStage.setTitle("HANGMAN ADVENTURE");
         primaryStage.setScene(new Scene(root, 1000, 600));
+        primaryStage.show();
+    }
+
+    public void changeSceneToGameScene(ActionEvent actionEvent) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("UI/GameScene.fxml"));
+
+        // Only creates a new scene if it doesn't already exist
+        if (GameScene == null)
+            GameScene = new Scene(root);
+        // This is the line that gets the stage information
+        Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        primaryStage.setScene(GameScene);
         primaryStage.show();
     }
 
