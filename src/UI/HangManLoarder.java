@@ -1,6 +1,5 @@
 package UI;
 
-import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -9,13 +8,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 
-public class letterTileLoader extends JLabel {
-
-    private final char IMAGE_LETTER;
+public class HangManLoarder extends JLabel {
 
     private int preferredWidth;
 
     private int preferredHeight;
+
+    private final String IMAGE_BASE_NAME;
 
     private final String IMAGE_DIRECTORY;
 
@@ -25,25 +24,20 @@ public class letterTileLoader extends JLabel {
 
     private BufferedImage image;
 
-    private MouseListener tileListener;
-
-    public letterTileLoader() {
-        this('a', "Resources/",".jpeg");
-    }
 
 
 
-    public letterTileLoader(char imageLetter, String imageDirectory, String imageType) {
+    public HangManLoarder(String imageBaseName, String imageDirectory, String imageType) {
 
-        preferredHeight = 50;
-        preferredWidth = 65;
+        preferredHeight = 272;
+        preferredWidth = 282;
 
-        IMAGE_LETTER = imageLetter;
+        IMAGE_BASE_NAME = imageBaseName;
         IMAGE_DIRECTORY = imageDirectory;
         IMAGE_TYPE = imageType;
 
         setPreferredSize(new Dimension(preferredWidth, preferredHeight));
-        path = IMAGE_DIRECTORY + IMAGE_LETTER + IMAGE_TYPE;
+        path = IMAGE_DIRECTORY + IMAGE_BASE_NAME + "_0" + IMAGE_TYPE;
         image = loadImage(path);
     }
 
@@ -65,30 +59,24 @@ public class letterTileLoader extends JLabel {
 
     }
 
-    public char guess(){
+    public void nextImage (int imageNumber){
 
-        loadnewImage("guessed");
-        removeTileListener();
-        return IMAGE_LETTER;
+        loadNewImage(String.valueOf(imageNumber));
     }
 
-    private void loadnewImage(String suffix){
+    public void loseImage(){
+        loadNewImage("lose");
+    }
 
-        path = IMAGE_DIRECTORY + IMAGE_LETTER + "_" + suffix + IMAGE_TYPE;
+    public void winImage(){
+        loadNewImage("win");
+    }
+
+    private void loadNewImage(String suffix){
+
+        path = IMAGE_DIRECTORY + IMAGE_BASE_NAME + "_" + suffix + IMAGE_TYPE;
         image = loadImage(path);
         repaint();
-    }
-
-    public void addTileListener(MouseListener l){
-
-        tileListener = l;
-        addMouseListener(tileListener);
-
-    }
-
-    public void removeTileListener(){
-
-        removeMouseListener(tileListener);
     }
 
     @Override
@@ -97,6 +85,5 @@ public class letterTileLoader extends JLabel {
         super.paintComponent(g);
         g.drawImage(image, 0, 0, preferredHeight, preferredWidth, null);
     }
-
 
 }
