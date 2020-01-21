@@ -40,7 +40,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       </rowConstraints>
       <children>
-         <ImageView fx:id="letterA" fitHeight="50.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fx:id="letterA" fitHeight="50.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" >
             <GridPane.margin>
                <Insets left="7.0" />
             </GridPane.margin>

@@ -31,7 +31,6 @@ public class LetterRack extends JPanel {
 
     public LetterRack (String inPassword, String imageDirectory, String imageType) {
 
-
         RACK_COLS = 13;
         RACK_ROWS = 2;
         LETTER_RACK_LAYOUT = new GridLayout(RACK_ROWS, RACK_COLS);
