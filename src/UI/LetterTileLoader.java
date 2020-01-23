@@ -28,7 +28,7 @@ public class LetterTileLoader extends JLabel {
     private MouseListener tileListener;
 
     public LetterTileLoader() {
-        this('a', "Resources/",".jpeg");
+        this('a', "src/Resources/",".JPG");
     }
 
 

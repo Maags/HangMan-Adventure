@@ -24,6 +24,8 @@ public class HangManLoarder extends JLabel {
 
     private BufferedImage image;
 
+    public HangManLoarder () {this("hangman", "src/Resources/", ".JPG");}
+
 
 
 

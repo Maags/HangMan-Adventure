@@ -55,11 +55,11 @@ public class GameBoard extends JFrame {
         MAX_INCORRECT = 6;
         MAX_PASSWORD_LENGTH = 10;
 
-        HANGMAN_IMAGE_DIRECTORY = "Resources/";
-        HANGMAN_IMAGE_TYPE = ".jpeg";
+        HANGMAN_IMAGE_DIRECTORY = "src/Resources/";
+        HANGMAN_IMAGE_TYPE = ".JPG";
         HANGMAN_IMAGE_BASENAME = "hangman";
-        LETTER_IMAGE_DIRECTORY = "Resources/";
-        LETTER_IMAGE_TYPE = "jpeg";
+        LETTER_IMAGE_DIRECTORY = "src/Resources/";
+        LETTER_IMAGE_TYPE = ".JPG";
 
         setTitle("HANGMAN ADVENTURES");
         setSize(WIDTH, HEIGHT);
@@ -120,6 +120,14 @@ public class GameBoard extends JFrame {
         gameRack.attachListeners(new TileListener());
         add(gameRack, BorderLayout.SOUTH);
 
+    }
+
+    private void addHangman(){
+
+        JPanel hangmanPanel = new JPanel();
+        gameHangman = new HangManLoarder(HANGMAN_IMAGE_BASENAME, HANGMAN_IMAGE_DIRECTORY, HANGMAN_IMAGE_TYPE);
+        hangmanPanel.add(gameHangman);
+        add(hangmanPanel, BorderLayout.CENTER);
     }
 
     private void getPassword() {
