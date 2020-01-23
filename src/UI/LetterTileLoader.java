@@ -74,7 +74,7 @@ public class LetterTileLoader extends JLabel {
 
     private void loadNewImage(String suffix){
 
-        path = IMAGE_DIRECTORY + IMAGE_LETTER + "_" + suffix + IMAGE_TYPE;
+        path = IMAGE_DIRECTORY + suffix + IMAGE_TYPE;
         image = loadImage(path);
         repaint();
     }

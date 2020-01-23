@@ -70,8 +70,11 @@ public class HangmanLogic {
 
     //Shows the hidden word
     public String getHiddenWord() {
+
         return "Hidden word: " + currentGuess.toString();
     }
+
+
 
     //returns the results, if the player won or lost
     public boolean gameOver() {
@@ -91,6 +94,7 @@ public class HangmanLogic {
     }
 
     public boolean didWeLose() {
+
         return currentTry >= maxTries;
     }
 
