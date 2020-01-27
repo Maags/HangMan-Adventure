@@ -2,7 +2,7 @@
 
 This file include two different types of the classic hangman game.
 
-###________________________________________________________
+###_______________________________________________________
 ###FIRST GAME - Console
 The first hangman version is started in the HangmanApplictaion class. Its takes a random word 
 from the dictionary.txt file an convertes the word into dashes ( _ _ _ _ ) - letters can be guest
