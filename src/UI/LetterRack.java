@@ -26,7 +26,7 @@ public class LetterRack extends JPanel {
     private ArrayList<LetterTileLoader> rack;
 
     public LetterRack(){
-        this ("password", "Resources", ".jpeg");
+        this ("password", "src/Resources/", ".JPG");
     }
 
     public LetterRack (String inPassword, String imageDirectory, String imageType) {

@@ -35,8 +35,8 @@ public class LetterTileLoader extends JLabel {
 
     public LetterTileLoader(char imageLetter, String imageDirectory, String imageType) {
 
-        preferredHeight = 50;
-        preferredWidth = 65;
+        preferredHeight = 70;
+        preferredWidth = 70;
 
         IMAGE_LETTER = imageLetter;
         IMAGE_DIRECTORY = imageDirectory;

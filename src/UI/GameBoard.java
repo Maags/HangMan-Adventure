@@ -1,8 +1,6 @@
 package UI;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
+
+import java.awt.*;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -12,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
 
 public class GameBoard extends JFrame {
 
@@ -44,16 +43,16 @@ public class GameBoard extends JFrame {
 
     private JLabel incorrect;
 
-    private String password;
+    private String word;
 
-    private StringBuilder passwordHidden;
+    private StringBuilder hiddenWord;
 
     public GameBoard() {
 
         WIDTH = 1000;
         HEIGHT = 600;
         MAX_INCORRECT = 6;
-        MAX_PASSWORD_LENGTH = 10;
+        MAX_PASSWORD_LENGTH = 15;
 
         HANGMAN_IMAGE_DIRECTORY = "src/Resources/";
         HANGMAN_IMAGE_TYPE = ".JPG";
@@ -73,12 +72,13 @@ public class GameBoard extends JFrame {
 
         numIncorrect = 0;
 
-        correct = new JLabel("Word: ");
+        correct = new JLabel("WORD: ");
+        correct.setFont(new Font("Arial", Font.PLAIN, 28));
         incorrect = new JLabel("Incorrect: " + numIncorrect);
-        password = new String();
-        passwordHidden = new StringBuilder();
+        word = new String();
+        hiddenWord = new StringBuilder();
 
-        getPassword();
+        getHiddenWord();
         addTextPanel();
         addLetterRack();
         addHangman();
@@ -116,7 +116,7 @@ public class GameBoard extends JFrame {
 
     private void addLetterRack() {
 
-        gameRack = new LetterRack(password, LETTER_IMAGE_DIRECTORY, LETTER_IMAGE_TYPE);
+        gameRack = new LetterRack(word, LETTER_IMAGE_DIRECTORY, LETTER_IMAGE_TYPE);
         gameRack.attachListeners(new TileListener());
         add(gameRack, BorderLayout.SOUTH);
 
@@ -130,42 +130,42 @@ public class GameBoard extends JFrame {
         add(hangmanPanel, BorderLayout.CENTER);
     }
 
-    private void getPassword() {
+    private void getHiddenWord() {
 
         String[] options = {"Let's play", "Quit"};
-        JPanel passwordPanel = new JPanel();
-        JLabel passwordLabel = new JLabel("Enter password to be guessed: ");
-        JTextField passwordText = new JTextField(MAX_PASSWORD_LENGTH);
-        passwordPanel.add(passwordLabel);
-        passwordPanel.add(passwordText);
+        JPanel hiddenWordPanel = new JPanel();
+        JLabel hiddenWordLabel = new JLabel("Enter hidden word to be guessed: ");
+        JTextField hiddenWordText = new JTextField(MAX_PASSWORD_LENGTH);
+        hiddenWordPanel.add(hiddenWordLabel);
+        hiddenWordPanel.add(hiddenWordText);
         int confirm = -1;
 
-        while (password.isEmpty()) {
+        while (word.isEmpty()) {
 
             confirm = -1;
-            confirm = JOptionPane.showOptionDialog(null, passwordPanel, "Enter password", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+            confirm = JOptionPane.showOptionDialog(null, hiddenWordPanel, "Enter hidden word", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
 
             if (confirm == 0) {
-                password = passwordText.getText();
+                word = hiddenWordText.getText();
 
-                if (!password.matches("[a-zA-Z]+") || password.length() > MAX_PASSWORD_LENGTH) {
+                if (!word.matches("[a-zA-Z]+") || word.length() > MAX_PASSWORD_LENGTH) {
 
-                    JOptionPane.showMessageDialog(null, JOptionPane.ERROR_MESSAGE);
-                    password = "";
+                    JOptionPane.showMessageDialog(null, "Word is invalid");
+                    word = "";
                 }
             } else if (confirm == 1)
                 System.exit(0);
         }
 
-        passwordHidden.append(password.replaceAll(".", "*"));
-        correct.setText(correct.getText() + passwordHidden.toString());
+        hiddenWord.append(word.replaceAll(".", "-"));
+        correct.setText(correct.getText() + hiddenWord.toString());
 
     }
 
     private void newGameDialog() {
 
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int dialogResult = JOptionPane.showConfirmDialog(null, "The password was:" + password + "Would you like to start a new game?", "Play Again", dialogButton);
+        int dialogResult = JOptionPane.showConfirmDialog(null, "The password was: " + word + "\nWould you like to start a new game?", "Play Again?", dialogButton);
         if (dialogResult == JOptionPane.YES_OPTION)
             initialize();
         else System.exit(0);
@@ -185,18 +185,18 @@ public class GameBoard extends JFrame {
                 LetterTileLoader tilePressed = (LetterTileLoader) source;
                 c = tilePressed.guess();
 
-                while ((index = password.toLowerCase().indexOf(c, index)) != -1) {
+                while ((index = word.toLowerCase().indexOf(c, index)) != -1) {
 
-                    passwordHidden.setCharAt(index, password.charAt(index));
+                    hiddenWord.setCharAt(index, word.charAt(index));
                     index++;
                     updated = true;
                 }
 
                 if (updated) {
 
-                    correct.setText("Word: " + passwordHidden.toString());
+                    correct.setText("Word: " + hiddenWord.toString());
 
-                    if (passwordHidden.toString().equals(password)) {
+                    if (hiddenWord.toString().equals(word)) {
 
                         gameRack.removeListeners();
                         gameHangman.winImage();

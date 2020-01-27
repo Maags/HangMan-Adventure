@@ -10,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameSceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.GameBoard">
    <ImageView fitHeight="722.0" fitWidth="1276.0" layoutX="-61.0" layoutY="-95.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../Resources/BG_GameScene.JPG" />
       </image>
    </ImageView>
-   <ImageView fx:id="hangmanImage" fitHeight="282.0" fitWidth="272.0" layoutX="45.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+   <ImageView fx:id="hmI" fitHeight="282.0" fitWidth="272.0" layoutX="45.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@../Resources/hangman_0.JPG" />
       </image>

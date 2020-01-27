@@ -31,8 +31,8 @@ public class HangManLoarder extends JLabel {
 
     public HangManLoarder(String imageBaseName, String imageDirectory, String imageType) {
 
-        preferredHeight = 272;
-        preferredWidth = 282;
+        preferredHeight = 300;
+        preferredWidth = 300;
 
         IMAGE_BASE_NAME = imageBaseName;
         IMAGE_DIRECTORY = imageDirectory;
