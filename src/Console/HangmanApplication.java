@@ -1,3 +1,7 @@
+package Console;
+
+import Console.HangmanLogic;
+
 import java.io.IOException;
 import java.util.Scanner;
 
