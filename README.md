@@ -1,6 +1,6 @@
 # HANGMAN ADVENTURES
 
-Welcome to HANGMAN ADVENTURE! 
+Welcome to HANGMAN ADVENTURES! 
 
 The rules are simple. A hidden word will be shown in dashes ( _ _ _ _ ). 
 Your job is to guess the word, one character at the time.
