@@ -33,7 +33,7 @@ public class HangmanLogic {
     // Checks is dictionary library is available
     public void connectLibrary() throws IOException {
         try {
-            File inFile = new File("src//dictionary.txt");
+            File inFile = new File("src//Console//dictionary.txt");
             fileReader = new FileReader(inFile);
             bufferedFileReader = new BufferedReader(fileReader);
             String currentLine = bufferedFileReader.readLine();
