@@ -16,6 +16,7 @@ The first hangman version is started by running the HangmanApplictaion class. It
 from the dictionary.txt file - letters can be guessed
  by entering a character on the keyboard. After the game is over, press " y " to play again.
 
+![Picture of console game](src/Resources/consoleGame.JPG)
 
 
 ### SECOND GAME - UI 
@@ -23,8 +24,10 @@ from the dictionary.txt file - letters can be guessed
 The second version is a GUI application and can be started by running the StartGame class.
 This version will ask the user to enter a hidden word to be guessed (max 15 characters - a to z). 
 The gameboard will be shown, after that the same principles applies, besides you use your mouse instead of keyboard.
-
-ENJOY! 
+ 
 
 
 ![Picture of GameBoard](src/Resources/gameBoardPic.JPG)
+
+
+ENJOY!
