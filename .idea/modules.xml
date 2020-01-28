@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HangMan-Adventure.iml" filepath="$PROJECT_DIR$/HangMan-Adventure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HangMan-Adventures.iml" filepath="$PROJECT_DIR$/HangMan-Adventures.iml" />
     </modules>
   </component>
 </project>
