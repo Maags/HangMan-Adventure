@@ -27,3 +27,4 @@ The gameboard will be shown, after that the same principles applies, besides you
 ENJOY! 
 
 
+![Picture of GameBoard](src/Resources/gameBoardPic.JPG)
